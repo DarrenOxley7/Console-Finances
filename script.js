@@ -87,13 +87,25 @@ var finances = [
     ['Feb-2017', 671099] //array 85
     ];
     // Console Header
+
       console.log ('--FINANCIAL ANALYSIS--');
       console.log ('----------------------');
+
     // Find the total number of months in the arrays
+
       console.log ('Total Months = ' + finances.length);
 
+    // Find the total profit/loss over for the whole period
 
-    // 2 add all together to give total profit loss
+      var profitLoss = 0;
+      var total_profitLoss =0;
+
+    for (var i = 0; i<finances.length; i++) {
+      profitLoss = finances [i] [1];
+      total_profitLoss += profitLoss;
+    };
+      console.log ('Total: $' + total_profitLoss)
+
     // 3 take the next one in line and subtract the previous. Add the difference to a stored variable then use the total difference then divide by the total months
     // 4 entire period = total arrays. greatest increase month on month
     // 5 entire period = total arrays. greatest decrease month on month
