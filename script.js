@@ -92,11 +92,10 @@ var finances = [
       console.log ('----------------------');
 
     // Find the total number of months in the arrays
-
-      console.log ('Total Months = ' + finances.length);
+      var totalMonths = finances.length;
+      console.log ('Total Months: ' + totalMonths);
 
     // Find the total profit/loss over for the whole period
-
       var total_profitLoss =0;
 
     for (var i = 0; i<finances.length; i++) {
@@ -105,8 +104,29 @@ var finances = [
       console.log ('Total: $' + total_profitLoss);
 
 
+// Variables to store different results from the following for loop.
 
-    // 3 take the next one in line and subtract the previous. Add the difference to a stored variable then use the total difference then divide by the total months
-    // 4 entire period = total arrays. greatest increase month on month
-    // 5 entire period = total arrays. greatest decrease month on month
-    
+var changeMonth = []
+var change = []
+var changeTotal = 0
+
+
+// Change tracked from month 2 (index 1) as no calculation from first month comparison
+for (var i = 1; i < finances.length; i++) {
+    // Calculate the difference between each month and the preceeding month
+    var changePerMonth = finances[i][1] - finances[i-1][1];
+    //Push monthly changes into the change array
+    change.push (changePerMonth);
+    //Push month and year and monthly changes into changeMonth array
+    changeMonth.push ([finances [i] [0], changePerMonth]);
+    //Totalise each monthly change 
+    changeTotal += changePerMonth
+  }
+    //Calculate average monthly change. Total of monthly changes / total number of months - the first month which cannot be compared
+  var averageChange = (changeTotal/(totalMonths -1)).toFixed (2)
+  console.log ('Average Change: $' + averageChange)
+
+          // 4 entire period = total arrays. greatest increase month on month
+          // 5 entire period = total arrays. greatest decrease month on month
+
+          
